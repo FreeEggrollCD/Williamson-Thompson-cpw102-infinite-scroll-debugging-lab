@@ -11,12 +11,10 @@ posts = [
 
 PAGE_SIZE = 3
 
-
 def fetch_page(page) -> list:
     start:int = page * PAGE_SIZE
     end:int = start + PAGE_SIZE
     return posts[start:end]
-
 
 page:int = 0
 feed:list = []
@@ -35,15 +33,19 @@ while True:
 
     action:str = input("\nScroll? (y/n): ")
 
+    # if charatcter is no it ends the loop
     if action.strip().lower() == "n":
         break
+    #if character is valid character
     if action.strip().lower() != "y":
         print("Invalid input. Please enter 'y' or 'n'.")
         continue
+    #if posts are less than the page size it ends the loop
     if page * PAGE_SIZE + len(new_posts) >= len(posts):
         print("No more posts to load.")
         break
 
+    #increments page multiplier for getting posts
     page += 1
 
 print("Session ended.")
