@@ -35,7 +35,13 @@ while True:
 
     action:str = input("\nScroll? (y/n): ")
 
-    if action == "n":
+    if action.strip().lower() == "n":
+        break
+    if action.strip().lower() != "y":
+        print("Invalid input. Please enter 'y' or 'n'.")
+        continue
+    if page * PAGE_SIZE + len(new_posts) >= len(posts):
+        print("No more posts to load.")
         break
 
     page += 1
