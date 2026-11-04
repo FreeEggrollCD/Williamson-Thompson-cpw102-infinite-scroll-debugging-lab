@@ -12,17 +12,17 @@ posts = [
 PAGE_SIZE = 3
 
 
-def fetch_page(page):
-    start = page * PAGE_SIZE
-    end = start + PAGE_SIZE
+def fetch_page(page) -> list:
+    start:int = page * PAGE_SIZE
+    end:int = start + PAGE_SIZE
     return posts[start:end]
 
 
-page = 0
-feed = []
+page:int = 0
+feed:list = []
 
 while True:
-    new_posts = fetch_page(page)
+    new_posts:list = fetch_page(page)
 
     for post in new_posts:
         feed.append(post)
@@ -33,11 +33,11 @@ while True:
 
     print(f"\nLoaded {len(feed)} posts")
 
-    action = input("\nScroll? (y/n): ")
+    action:str = input("\nScroll? (y/n): ")
 
     if action == "n":
         break
 
-    page = 0
+    page += 1
 
 print("Session ended.")
